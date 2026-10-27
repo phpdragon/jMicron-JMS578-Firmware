@@ -2,6 +2,14 @@
 
 针对JMS578芯片的固件集合和刷机工具，可解决USB3&lt;->SATA接口存在的USB 3.0/1问题（如断开连接、读写异常等）。
 
+## 背景
+
+手上有一个奥瑞科2.5寸透明硬盘盒，USB3.0接口，型号ORICO-2159U3, 带固态电容版本。
+进行坏道扫描时显示有很多坏道（我接入台式机之前扫描一切正常），同时写入大文件时会掉盘重连。
+豆包说 90% 属于`JMS578`原厂固件`UASP`协议栈的指令超时、链路复位带来的**IO 报错 / 假坏道**。
+
+这是前提，然后找固件刷写这个盒子的固件。
+
 ## 一、固件说明
 
 > 建议刷188.02.00.01，适配 奥瑞科 ORICO-2159U3 2.5寸透明硬盘盒，USB3.0接口。
@@ -144,13 +152,10 @@ Bridge Firmware Version: v173.1.0.2
 - [对标绿联v1.0.15全部优化点的JMS578固件](https://www.mydigit.cn/thread-614748-1-1.html)
 - [如何在HC1/HC2下使用JMS578固件更新程序](https://wiki.odroid.com/odroid-xu4/software/jms578_fw_update)
 - [jMicron-JMS578-Firmware-Linux](https://github.com/russinnes/jMicron-JMS578-Firmware-Linux)
+- [JMS578 USB转mSATA移动硬盘](https://www.cnblogs.com/yanye0xcc/p/16503512.html)
 
 ## 五、其他资料
+
 https://forum.odroid.com/viewtopic.php?t=28535
-
-https://www.jmicron.com/products/list/12
-
-https://wiki.odroid.com/odroid-xu4/software/jms578_fw_update
-
+[智微产品信息-USB系列桥接控制器](https://www.jmicron.com/products/list/12)
 https://www.station-drivers.com/index.php?option=com_remository&Itemid=353&func=fileinfo&id=3749&lang=en
-
