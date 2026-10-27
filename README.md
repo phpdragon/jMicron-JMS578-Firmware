@@ -162,4 +162,5 @@ Bridge Firmware Version: v173.1.0.2
 
 - https://forum.odroid.com/viewtopic.php?t=28535
 - [智微产品信息-USB系列桥接控制器](https://www.jmicron.com/products/list/12)
+- [奥睿科2.5寸USB3.0移动透明硬盘盒，USB3.0 Micro-B接口](https://orico.com.cn/index/product/detail/651.html)
 - https://www.station-drivers.com/index.php?option=com_remository&Itemid=353&func=fileinfo&id=3749&lang=en
