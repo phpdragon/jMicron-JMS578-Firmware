@@ -1,25 +1,25 @@
 # jMicron-JMS578-Firmware
+
 针对JMS578芯片的固件集合和刷机工具，可解决USB3&lt;->SATA接口存在的USB 3.0/1问题（如断开连接、读写异常等）。
 
 ## 一、固件说明
 
-> 建议刷188.02.00.01。
+> 建议刷188.02.00.01，适配 奥瑞科 ORICO-2159U3 2.5寸透明硬盘盒，USB3.0接口。
 
-JMicron官方188.02.00.01一共五大维度硬性升级，完美解决杂牌/ORICO盒子最普遍的痛点
-
+JMicron官方188.02.00.01一共五大维度硬性升级，完美解决杂牌/ORICO盒子最普遍的痛点。
 一、UASP协议栈：根治握手降级、长时满载回落BOT（最核心提升）- 增加UAS多次重试握手机制，放宽SCSI REPORT LUNS超时阈值- 优化USB3.0数据包时序容错，主板XHCI控制器波动不会直接切断UAS链路- 高负载数据流拥塞时不会主动切回BOT，长时间挂机拷贝几十GB文件全程锁定UAS> 实测表现：普通3块钱杂牌USB‑C短线、带屏蔽劣质长线，都能稳定维持UAS识别
-
-
 二、VBUS供电链路优化（绿联1.0.15主打修复）1. 旧固件问题：USB口电压瞬间跌落、插拔瞬间浪涌、笔记本USB口供电能力偏弱时，主控工作异常、断连、掉盘。很多ORICO透明盒满载掉盘就是这个原因。2. 188优化内容：- 增加VBUS电压采样滤波算法，抑制瞬时电压抖动误触发主控复位- 区分总线供电（2.5寸SSD盒）/外接供电SelfPower两套供电阈值，你这种普通移动盒刷BUS版188，供电匹配度拉满- 主控内部电源管理调压曲线更平缓，长时间满载主控温升更低、稳定性更好
-
-
 三、TRIM指令完整透传 + SSD写入掉速问题修复1. 老固件现状：哪怕开了UASP，固件会拦截系统下发的TRIM命令，SSD无法自动垃圾回收，外置盘使用两三个月写入速度明显下跌、写入放大升高、SSD寿命损耗变大。部分固态全盘擦除后跑分无法恢复出厂水准。2. 188固件：原生直通Windows/macOS/Linux系统下发的TRIM指令，UASP模式下TRIM全程生效；不需要额外软件手动执行TRIM，外置SSD耐久、长期性能保持原厂状态。
-
-
 四、系统休眠、唤醒、闲置功耗逻辑重做（原厂固件重灾区）1. 原厂默认固件通病：电脑睡眠后硬盘盒反复自动唤醒、疯狂闪灯；或者休眠后无法唤醒磁盘，必须重新拔插USB。闲置空载功耗偏高，笔记本外出耗电更快。188固件优化：
 细化闲置分级休眠：空闲几秒进入主控低功耗、SSD 待机休眠，不会无故频繁唤醒系统休眠恢复后，UAS 链路平滑重建，不会出现磁盘脱机空载待机功耗下降，长期插电脑挂机更友好（适合 NAS、Home Assistant 挂载硬盘）
 
-标准固件修订历史
+---
+
+JMS578_PPE_v124.01.00.02.bin  关闭自动休眠版本
+
+---
+
+具体每个版本的作用，不是很清楚，目前收集到的就是这些，建议询问AI。
 
 ## 二、使用办法
 
@@ -137,8 +137,20 @@ root@odroid:~# ./JMS578FwUpdate -d /dev/sda -v
 Bridge Firmware Version: v173.1.0.2
 ```
 
-##  固件来源
+## 四、固件来源
 
 - [移动硬盘盒JMS578刷机程序及多个版本固件，易驱线同样适用](https://bbs.pcbeta.com/viewthread-2077078-1-1.html)
-- [jMicron-JMS578-Firmware-Linux](https://github.com/russinnes/jMicron-JMS578-Firmware-Linux)
+- [JMS578固件_32合1_2026_整理合集](https://www.mydigit.cn/thread-607527-1-1.html)
+- [对标绿联v1.0.15全部优化点的JMS578固件](https://www.mydigit.cn/thread-614748-1-1.html)
 - [如何在HC1/HC2下使用JMS578固件更新程序](https://wiki.odroid.com/odroid-xu4/software/jms578_fw_update)
+- [jMicron-JMS578-Firmware-Linux](https://github.com/russinnes/jMicron-JMS578-Firmware-Linux)
+
+## 五、其他资料
+https://forum.odroid.com/viewtopic.php?t=28535
+
+https://www.jmicron.com/products/list/12
+
+https://wiki.odroid.com/odroid-xu4/software/jms578_fw_update
+
+https://www.station-drivers.com/index.php?option=com_remository&Itemid=353&func=fileinfo&id=3749&lang=en
+
