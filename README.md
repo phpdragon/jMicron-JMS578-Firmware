@@ -160,6 +160,7 @@ Bridge Firmware Version: v173.1.0.2
 
 ## 五、其他资料
 
+- [奥睿科2.5/3.5硬盘盒修改休眠时间](https://orico.com.cn/index/attachment/index.html?id=1&keyword=2.5%2F3.5%E7%A1%AC%E7%9B%98%E7%9B%92)
 - https://forum.odroid.com/viewtopic.php?t=28535
 - [智微产品信息-USB系列桥接控制器](https://www.jmicron.com/products/list/12)
 - [奥睿科2.5寸USB3.0移动透明硬盘盒，USB3.0 Micro-B接口](https://orico.com.cn/index/product/detail/651.html)
